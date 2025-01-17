@@ -1,0 +1,89 @@
+{
+    "endpoints": [
+      {
+        "name": "Get All Products",
+        "method": "GET",
+        "url": "/products",
+        "description": "Fetch all available products to display on the product listing page.",
+        "responseExample": [
+          {
+            "id": 1,
+            "name": "Sofa A",
+            "price": 500,
+            "stock": 20,
+            "image": "sofa-a.jpg"
+          },
+          {
+            "id": 2,
+            "name": "Sofa B",
+            "price": 800,
+            "stock": 10,
+            "image": "sofa-b.jpg"
+          }
+        ]
+      },
+      {
+        "name": "Get Product Details",
+        "method": "GET",
+        "url": "/product/{id}",
+        "description": "Fetch detailed information about a specific product.",
+        "responseExample": {
+          "id": 1,
+          "name": "Sofa A",
+          "price": 500,
+          "stock": 20,
+          "description": "A luxurious leather sofa.",
+          "images": ["sofa-a1.jpg", "sofa-a2.jpg"]
+        }
+      },
+      {
+        "name": "Create Order",
+        "method": "POST",
+        "url": "/orders",
+        "description": "Save a new order to the backend (Sanity CMS).",
+        "payloadExample": {
+          "customerId": "123",
+          "products": [
+            { "productId": "1", "quantity": 2 },
+            { "productId": "2", "quantity": 1 }
+          ],
+          "total": 1800
+        },
+        "responseExample": {
+          "orderId": "456",
+          "status": "Success",
+          "message": "Order placed successfully!"
+        }
+      },
+      {
+        "name": "Get Order Details",
+        "method": "GET",
+        "url": "/orders/{id}",
+        "description": "Fetch details of a specific order.",
+        "responseExample": {
+          "orderId": "456",
+          "customerId": "123",
+          "products": [
+            { "productId": "1", "quantity": 2, "price": 500 },
+            { "productId": "2", "quantity": 1, "price": 800 }
+          ],
+          "total": 1800,
+          "status": "Completed"
+        }
+      },
+      {
+        "name": "Track Shipment",
+        "method": "GET",
+        "url": "/shipment-status",
+        "description": "Retrieve real-time shipment status of an order.",
+        "queryParams": ["orderId"],
+        "responseExample": {
+          "orderId": "456",
+          "status": "In Transit",
+          "ETA": "2025-01-18T12:00:00Z",
+          "location": "New York Distribution Center"
+        }
+      }
+    ]
+  }
+  
